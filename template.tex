@@ -1,0 +1,243 @@
+% !TEX program = xelatex
+%==============================常用宏包、环境==============================%
+\documentclass[twocolumn,a4]{article}%两栏，A4大小
+%\documentclass[a4paper,11pt]{article}
+\usepackage{xeCJK} % 中文支持
+\usepackage{amsmath, amsthm}
+\usepackage{listings,xcolor} %插入代码
+\usepackage{geometry} % 设置页边距
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{fancyhdr} % 自定义页眉页脚
+\usepackage[colorlinks]{hyperref}  % 目录可跳转
+\setsansfont{Consolas} % 设置英文字体
+\setmonofont[Mapping={}]{Consolas} % 英文引号之类的正常显示，相当于设置英文字体
+\geometry{left=1cm,right=1cm,top=2cm,bottom=0.5cm} % 页边距
+\setlength{\columnsep}{30pt} %两栏之间的间距大小
+%\setlength\columnseprule{0.4pt} % 分割线
+%==============================常用宏包、环境==============================%
+
+%==============================页眉、页脚、代码格式设置==============================%
+% 页眉、页脚设置
+\pagestyle{fancy}
+% \lhead{CUMTB}
+\fancyhf{}
+\fancyhead[C]{\CJKfamily{hei} SICNU ACM Template}
+\lhead{\CJKfamily{hei} SICNU ACM Template}
+\chead{}
+% \rhead{Page \thepage}
+\rhead{\CJKfamily{hei} 第 \thepage 页}
+\lfoot{} 
+\cfoot{}
+\rfoot{}
+%\renewcommand{\headrulewidth}{0.4pt} 
+%\renewcommand{\footrulewidth}{0.4pt}
+
+% 代码格式设置
+\lstset{
+    language    = c++,
+    numbers     = left,
+    numberstyle = \tiny,
+    breaklines  = true,
+    captionpos  = b,
+    tabsize     = 4,
+    frame       = shadowbox,
+    columns     = fullflexible,
+    commentstyle = \color[RGB]{0,128,0},
+    keywordstyle = \color[RGB]{0,0,255},
+    basicstyle   = \small\ttfamily,
+    stringstyle  = \color[RGB]{148,0,209}\ttfamily,
+    rulesepcolor = \color{red!20!green!20!blue!20},
+    showstringspaces = false,
+}
+%==============================页眉、页脚、代码格式设置==============================%
+
+%==============================标题和目录==============================%
+\title{\CJKfamily{hei} \bfseries SICNU ACM Template}
+\author{renli}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+
+\begin{document}\small
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\newpage
+\pagestyle{empty}
+\renewcommand{\contentsname}{目录}
+\tableofcontents %生成目录
+\newpage\clearpage
+\newpage
+\pagestyle{fancy}
+\setcounter{page}{1}   %new page
+%==============================标题和目录==============================%
+
+%==============================正文部分==============================%
+%0.头文件
+\section{头文件}
+\lstinputlisting{0_Include/0_Include.cpp}
+%1.数学
+\section{数学}
+\subsection{素数}
+    \subsubsection{素数筛}
+    \lstinputlisting{1_Math/1_Prime/1_PrimeSieve.cpp}
+    \subsubsection{区间筛}
+    \lstinputlisting{1_Math/1_Prime/2_SegmentSieve.cpp}
+    \subsubsection{Miller Rabin 素数判断}
+    \lstinputlisting{1_Math/1_Prime/3_MillerRabin.cpp}
+\subsection{高斯消元}
+    $A^{-1} * |A| = (A^*)$
+    \subsubsection{求逆矩阵}
+    \lstinputlisting{1_Math/2_Gauss/1_InverseMatrix.cpp}
+    \subsubsection{解01方程组}
+    \lstinputlisting{1_Math/2_Gauss/2_01.cpp}
+\subsection{矩阵快速幂}
+    \input{1_Math/3_Matrix/1_MatrixFastPow.tex}
+    \lstinputlisting{1_Math/3_Matrix/1_MatrixFastPow.cpp}
+%2.字符串
+\section{字符串}
+\subsection{KMP}
+\lstinputlisting{2_String/1_kmp.cpp}
+\subsection{扩展KMP}
+\lstinputlisting{2_String/2_ekmp.cpp}
+\subsection{Manacher 最长回文子串}
+\lstinputlisting{2_String/3_Manacher.cpp}
+\subsection{AC自动机}
+\lstinputlisting{2_String/4_ACAutomaton.cpp}
+\subsection{后缀数组}
+\lstinputlisting{2_String/5_SuffixArray.cpp}
+\subsection{后缀自动机}
+\lstinputlisting{2_String/6_SuffixAutomation.cpp}
+%3.数据结构
+\section{数据结构}
+\subsection{RMQ}
+    \subsubsection{一维RMQ}
+    \lstinputlisting{3_DataStructure/1_RMQ/1_RMQ1.cpp}
+    \subsubsection{二维RMQ}
+    \lstinputlisting{3_DataStructure/1_RMQ/2_RMQ2.cpp}
+\subsection{线段树}
+    \subsubsection{宏定义}
+    \lstinputlisting{3_DataStructure/2_SegmentTree/0_Define.cpp}
+    \subsubsection{单点修改}
+    \lstinputlisting{3_DataStructure/2_SegmentTree/1_SinglePointUpdate.cpp}
+    \subsubsection{区间修改}
+    \lstinputlisting{3_DataStructure/2_SegmentTree/2_IntervalUpdate.cpp}
+\subsection{分块}
+\lstinputlisting{3_DataStructure/3_Block.cpp}
+%4.图论
+\section{图论}
+\subsection{最小生成树}
+    \subsubsection{并查集}
+    \lstinputlisting{4_Graph/1_MinimalSpanningTree/0_UnionFindSet.cpp}
+    \subsubsection{Kruskal}
+    \lstinputlisting{4_Graph/1_MinimalSpanningTree/1_Kruskal.cpp}
+    \subsubsection{Prim}
+    \lstinputlisting{4_Graph/1_MinimalSpanningTree/2_Prim.cpp}
+\subsection{最短路}
+    \subsubsection{Dijkstra}
+    \lstinputlisting{4_Graph/2_ShortestPath/1_Dijkstra.cpp}
+    \subsubsection{SPFA}
+    \lstinputlisting{4_Graph/2_ShortestPath/2_spfa.cpp}
+    \subsubsection{Floyd}
+    \lstinputlisting{4_Graph/2_ShortestPath/3_Floyd.cpp}
+\subsection{LCA}
+    \subsubsection{离线Tarjan}
+    \lstinputlisting{4_Graph/3_LCA/1_Tarjan.cpp}
+    \subsubsection{LCA 倍增法}
+    \lstinputlisting{4_Graph/3_LCA/2_Doubly.cpp}
+\subsection{拓扑排序}
+\lstinputlisting{4_Graph/4_TopSort/1_TopSort.cpp}
+\subsection{网络流}
+    \subsubsection{建模技巧}
+    \input{4_Graph/5_NetworkFlow/0_Trick}
+    \subsubsection{Edge}
+    \lstinputlisting{4_Graph/5_NetworkFlow/1_Edge.cpp}
+    \subsubsection{Dinic}
+    \lstinputlisting{4_Graph/5_NetworkFlow/2_Dinic.cpp}
+    \subsubsection{ISAP}
+    \lstinputlisting{4_Graph/5_NetworkFlow/3_ISAP.cpp}
+    \subsubsection{MCMF}
+    \lstinputlisting{4_Graph/5_NetworkFlow/4_MCMF.cpp}
+%5.计算几何
+\section{计算几何}
+\subsection{基本函数}
+    \subsubsection{定义点和线}
+    \lstinputlisting{5_Geometry/0_Basic/0_Basic.cpp}
+    \subsubsection{两点间距离}
+    \lstinputlisting{5_Geometry/0_Basic/1_Point-Point.cpp}
+    \subsubsection{线段相交}
+    \lstinputlisting{5_Geometry/0_Basic/2_Segment-Segment.cpp}
+    \subsubsection{直线和线段相交}
+    \lstinputlisting{5_Geometry/0_Basic/3_Line-Segment.cpp}
+    \subsubsection{点到直线距离}
+    \lstinputlisting{5_Geometry/0_Basic/4_Point-Line.cpp}
+    \subsubsection{点到线段距离}
+    \lstinputlisting{5_Geometry/0_Basic/5_Point-Segment.cpp}
+    \subsubsection{判断点在线段上}
+    \lstinputlisting{5_Geometry/0_Basic/6_PointOnSegment.cpp}
+\subsection{多边形}
+    \subsubsection{计算多边形面积}
+    \lstinputlisting{5_Geometry/1_Polygon/1_Area.cpp}
+    \subsubsection{判断点在凸多边形内}
+    \lstinputlisting{5_Geometry/1_Polygon/2_PointInConvex.cpp}
+    \subsubsection{判断点在任意多边形内}
+    \lstinputlisting{5_Geometry/1_Polygon/3_PointInPolygon.cpp}
+    \subsubsection{判断凸多边形}
+    \lstinputlisting{5_Geometry/1_Polygon/4_JudgeConvex.cpp}
+    \subsubsection{凸包}
+    \lstinputlisting{5_Geometry/1_Polygon/5_Graham.cpp}
+\subsection{圆}
+    \subsubsection{外心}
+    \lstinputlisting{5_Geometry/2_Circle/1_waixin.cpp}
+    \subsubsection{两圆相交的面积}
+    \lstinputlisting{5_Geometry/2_Circle/2_Area_of_overlap.cpp}
+%6.动态规划
+\section{动态规划}
+\subsection{最长上升子序列}
+\lstinputlisting{6_DynamicProgramming/1_LongestIncrease.cpp}
+\subsection{数位dp}
+\lstinputlisting{6_DynamicProgramming/2_DigitStatistics.cpp}
+%7.其他
+\section{其他}
+\subsection{Java}
+\lstinputlisting{7_Others/1_Java/1_Java.java}
+\subsection{STL}
+    \subsubsection{优先队列}
+    \lstinputlisting{7_Others/2_STL/1_priority_queue.cpp}
+\subsection{SG函数}
+    \input{7_Others/3_SG/0_Trick}
+    \subsubsection{打表}
+    \lstinputlisting{7_Others/3_SG/1_table.cpp}
+    \subsubsection{dfs}
+    \lstinputlisting{7_Others/3_SG/2_dfs.cpp}
+\subsection{战术研究}
+    - 读新题的优先级高于一切\\
+    - 读完题之后必须看一遍clarification\\
+    - 交题之前必须看一遍clarification\\
+    - 可能有SPJ的题目提交前也应该尽量做到与样例输出完全一致\\
+    - A时需要检查INF是否设小\\
+    - 构造题不可开场做\\
+    - 每道题需至少有两个人确认题意\\
+    - 上机之前做法需得到队友确认\\
+    - 带有猜想性质的算法应放后面写\\
+    - 当发现题目不会做但是过了一片时应冲一发暴力\\
+    - 将待写的题按所需时间放入小根堆中，每次选堆顶的题目写\\
+    - 交完题目后立马打印随后让出机器\\
+    - 写题超过半小时应考虑是否弃题\\
+    - 细节、公式等在上机前应在草稿纸上准备好，防止上机后越写越乱\\
+    - 提交题目之前应检查$solve(n,m)$是否等于$solve(m,n)$\\
+    - 检查是否所有东西都已经清空\\
+    - 对于中后期题应该考虑一人写题，另一人在一旁辅助，及时发现手误\\
+    - 最后半小时不能慌张\\
+    - 对于取模的题，在输出之前一定要再取模一次进行保险\\
+\subsection{打表找规律方法}
+    - 直接找规律\\
+    - 差分后找规律\\
+    - 找积性\\
+    - 点阵打表\\
+    - 相除\\
+    - 找循环节\\
+    - 凑量纲\\
+    - 猜想满足$P(n)f(n)=Q(n)f(n−2)+R(n)f(n−1)+C$，其中$P,Q,R$都是关于$n$的二次多项式\\
+%==============================正文部分==============================%
+\end{document}

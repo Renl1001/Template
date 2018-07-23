@@ -1,0 +1,48 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "PDFLaTeX",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "XeLaTeX",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "BibTeX",
+            "tools": [
+                "bibtex"
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.latex.autoBuild.onSave.enabled": false,
+}
