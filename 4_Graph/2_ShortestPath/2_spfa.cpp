@@ -4,22 +4,20 @@
 *这个是队列实现，有时候改成栈实现会更加快，很容易修改
 *这个复杂度是不定的
 */
-const int MAXN = 1010;
-const int INF = 0x3f3f3f3f;
 struct Edge
 {
     int v;
     int cost;
     Edge(int _v = 0, int _cost = 0): v(_v), cost(_cost) {}
 };
-vector<Edge>E[MAXN];
+vector<Edge>E[maxn];
 void addedge(int u, int v, int w)
 {
     E[u].push_back(Edge(v, w));
 }
-bool vis[MAXN];//在队列标志
-int cnt[MAXN];//每个点的入队列次数
-int dist[MAXN];
+bool vis[maxn];//在队列标志
+int cnt[maxn];//每个点的入队列次数
+int dist[maxn];
 bool SPFA(int start, int n)
 {
     memset(vis, false, sizeof(vis));

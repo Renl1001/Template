@@ -1,6 +1,6 @@
 /*
 * 复杂度O(ElogE)
-* 注意对vector<Edge>E[MAXN]进行初始化后加边
+* 注意对vector<Edge>E[maxn]进行初始化后加边
 */
 struct qnode
 {
@@ -16,9 +16,9 @@ struct Edge
     int v, cost;
     Edge(int _v = 0, int _cost = 0): v(_v), cost(_cost) {}
 };
-vector<Edge>E[MAXN];
-bool vis[MAXN];
-int dist[MAXN];
+vector<Edge>E[maxn];
+bool vis[maxn];
+int dist[maxn];
 void Dijkstra(int n, int start) //点的编号从1开始
 {
     memset(vis, false, sizeof(vis));
